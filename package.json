@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-checksum",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "author": "jerry <jerry@pancakeswap.com>",
   "license": "MIT",

@@ -8,17 +8,34 @@ const tester = new RuleTester({
   },
 });
 
+const checksumedAddr = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+const unchecksumedAddr = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+const errMessage = "unchecksumed address";
+
 tester.run("require-checksum", rules["require-checksum"], {
   valid: [
-    "0x0000000000000000000000000000000000000000",
-    "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "const addr = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'",
+    // Literal
+    `${checksumedAddr}`,
+    `const addr = '${checksumedAddr}'`,
+    `const addrs = ['${checksumedAddr}', '${checksumedAddr}']`,
+    `const addrObj = { burnAddr: ${checksumedAddr} }`,
   ],
   invalid: [
+    // Literal
     {
-      code: "const addr = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'",
-      output: "const addr = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'",
-      errors: ["unchecksumed address"],
+      code: `'${unchecksumedAddr}'`,
+      output: `'${checksumedAddr}'`,
+      errors: [errMessage],
+    },
+    {
+      code: `const addr = '${unchecksumedAddr}'`,
+      output: `const addr = '${checksumedAddr}'`,
+      errors: [errMessage],
+    },
+    {
+      code: `const addrObj = { burnAddr: '${unchecksumedAddr}' }`,
+      output: `const addrObj = { burnAddr: '${checksumedAddr}' }`,
+      errors: [errMessage],
     },
   ],
 });
