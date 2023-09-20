@@ -12,7 +12,7 @@ const ruleFixer = (node: Node, replacement: string): Rule.ReportFixer => {
 };
 
 export const rules: Record<string, Rule.RuleModule> = {
-  "require-checksum": {
+  "addr-type": {
     meta: {
       docs: {
         description: "docs.description",
@@ -21,25 +21,29 @@ export const rules: Record<string, Rule.RuleModule> = {
       messages: {
         unexpected: "'{{origin}}' is not a checksumed address",
       },
+      schema: [
+        {
+          enum: ["checksum", "lowercase"],
+        },
+      ],
     },
     create: (context) => {
+      const checkOption = context.options?.[0] ?? "checksum";
       function verifyChecksumAddress(node: Node) {
         switch (node.type) {
           case "Literal": {
             // ignore other type of value, e.g BigInt, number, RegExp
             if (typeof node.value === "string" && isAddress(node.value)) {
-              console.log("literal", node.value);
-              // @todo implement different verify logic according to rules
-              const checksumedAddr = getAddress(node.value);
-              if (checksumedAddr !== node.value) {
+              const checkedAddr = getAddress(node.value, checkOption);
+              if (checkedAddr !== node.value) {
                 context.report({
                   node,
                   message: "unchecksumed address",
                   data: {
                     origin: node.value,
-                    expected: checksumedAddr,
+                    expected: checkedAddr,
                   },
-                  fix: ruleFixer(node, checksumedAddr),
+                  fix: ruleFixer(node, checkedAddr),
                 });
               }
             }

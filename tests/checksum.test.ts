@@ -12,7 +12,7 @@ const checksumedAddr = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 const unchecksumedAddr = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 const errMessage = "unchecksumed address";
 
-tester.run("require-checksum", rules["require-checksum"], {
+tester.run("addr-type-checksum", rules["addr-type"], {
   valid: [
     // Literal
     `${checksumedAddr}`,
