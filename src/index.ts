@@ -1,6 +1,6 @@
 import { type Rule } from "eslint";
 import { type Node } from "estree";
-import { isAddress, getAddress } from "viem";
+import { getAddress, isAddress } from "./utils";
 
 const ruleFixer = (node: Node, replacement: string): Rule.ReportFixer => {
   return (fixer) => {
