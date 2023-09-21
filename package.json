@@ -16,7 +16,7 @@
     "test": "jest",
     "clean": "rimraf dist",
     "changeset:version": "changeset status && changeset version",
-    "changeset:publish": "pnpm publish -r"
+    "changeset:publish": "pnpm build && changeset publish"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm test"
