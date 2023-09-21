@@ -1,17 +1,19 @@
 {
-  "name": "eslint-plugin-checksum",
+  "name": "eslint-plugin-address",
   "version": "0.0.0",
   "main": "dist/index.js",
   "author": "jerry <jerry@pancakeswap.com>",
   "packageManager": "pnpm@8.6.0",
   "license": "MIT",
   "scripts": {
+    "preinstall": "npx only-allow-pnpm",
+    "prepare": "npx simple-git-hooks",
     "build": "tsc --project tsconfig.build.json",
     "prebuild": "pnpm clean",
     "test": "jest",
     "clean": "rimraf dist",
-    "ci:version": "pnpm changeset version",
-    "ci:publish": "pnpm publish -r"
+    "changeset:version": "changeset status && changeset version",
+    "changeset:publish": "pnpm publish -r"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm test"

@@ -1,4 +1,4 @@
-# eslint-plugin-checksum
+# eslint-plugin-address
 
 ## 0.0.1
 

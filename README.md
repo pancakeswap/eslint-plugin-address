@@ -1,22 +1,22 @@
-# eslint-plugin-checksum
+# eslint-plugin-address
 
 evm address lint rule
 
 ## Installation
 
 ```sh
-pnpm add -D eslint-plugin-checksum eslint
+pnpm add -D eslint-plugin-address eslint
 ```
 
 It is also possible to install ESLint globally rather than locally.
 
 ## Configuration
 
-Add "checksum" plugin to your config files.
+Add "address" plugin to your config files.
 
 ```jsonc
 {
-  "plugins": ["checksum", ...others],
+  "plugins": ["address", ...others],
 }
 ```
 
@@ -26,11 +26,11 @@ Enable or disable the rules
 {
   "rules": {
     // default set
-    "checksum/addr-type": "error",
+    "address/addr-type": "error",
     // or, specific use checksumed address
-    "checksum/addr-type": ["error", "checksum"],
+    "address/addr-type": ["error", "checksum"],
     // or, specific use lowercase address
-    "checksum/addr-type": ["error", "lowercase"]
+    "address/addr-type": ["error", "lowercase"]
   }
 }
 ```
