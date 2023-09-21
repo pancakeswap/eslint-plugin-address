@@ -5,6 +5,9 @@
   "author": "jerry <jerry@pancakeswap.com>",
   "packageManager": "pnpm@8.6.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "preinstall": "npx only-allow-pnpm",
     "prepare": "npx simple-git-hooks",
