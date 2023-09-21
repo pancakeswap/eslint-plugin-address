@@ -22,6 +22,9 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8
+
       - name: Set up node@18
         uses: actions/setup-node@v3
         with:
@@ -42,6 +45,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Install dependencies
+        run: pnpm i --ignore-scripts
       - name: Build
         run: pnpm build
 
@@ -56,6 +61,8 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8
       - name: Set up node@18
         uses: actions/setup-node@v3
         with:
@@ -75,6 +82,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
+      - name: Install dependencies
+        run: pnpm i --ignore-scripts
       - name: Test
         run: pnpm test
