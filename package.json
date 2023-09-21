@@ -9,7 +9,6 @@
     "access": "public"
   },
   "scripts": {
-    "preinstall": "npx only-allow-pnpm",
     "prepare": "npx simple-git-hooks",
     "build": "tsc --project tsconfig.build.json",
     "prebuild": "pnpm clean",
