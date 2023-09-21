@@ -1,5 +1,9 @@
 # eslint-plugin-address
 
+![npm](https://img.shields.io/npm/v/eslint-plugin-address)
+![GitHub](https://img.shields.io/github/license/pancakeswap/eslint-plugin-address)
+![npm](https://img.shields.io/npm/dm/eslint-plugin-address)
+
 evm address lint rule
 
 ## Installation
