@@ -1,5 +1,5 @@
 ---
-"eslint-plugin-checksum": patch
+"eslint-plugin-address": patch
 ---
 
 First release
